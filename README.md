@@ -43,4 +43,11 @@ ifconfig检查一下
 
 同样，两台新机器，配置静态ip，配置好后用ifconfig检查下
 
-### 2. 
+### 2. 配置host文件
+修改主节点名字为cdh-01；
+` hostnamectl set-hostname cdh-01 `  
+` hostname `  
+hostname 检查下  
+
+同样去修改另外两台机器，修改为 cdh-02、cdh-03；
+
