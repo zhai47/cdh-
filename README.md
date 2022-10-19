@@ -53,8 +53,8 @@ hostname 检查下
 
 /etc/hosts文件下面写入主机和地址们
 `cat >> /etc/hosts << EOF
-node1的address node1的hostname
-node2的address node2的hostname
-node3的address node3的hostname
-`
+node1的address node1的hostname  
+node2的address node2的hostname  
+node3的address node3的hostname  
+`  
 
