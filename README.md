@@ -85,4 +85,9 @@ node3的address node3的hostname
 ` sysctl -a | grep vm.swappiness `  
 ` echo 1 > /proc/sys/vm/swappiness`  
 ` sysctl -a | grep vm.swappiness`  
-` cat >> /etc/sysctl.conf << EOF  vm.swappiness=1  EOF`  
+```shell
+
+cat >> /etc/sysctl.conf << EOF  
+  vm.swappiness=1  
+  EOF
+```  
