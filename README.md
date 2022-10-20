@@ -58,3 +58,31 @@ node2的address node2的hostname
 node3的address node3的hostname  
 `
 
+## 4. 关闭selinux访问控制（在所有节点执行）
+` grep ^SELINUX= /etc/selinux/config`  
+` sed -i 's/^SELINUX=.*/SELINUX=disabled/g' /etc/selinux/config`  
+` setenforce 0`  
+` getenforce`  
+
+## 5. 关闭iptables（在所有节点执行）
+` systemctl disable firewalld`  
+` systemctl stop firewalld`  
+
+## 6. 配置ssh互信（在所有节点执行）
+### 所有结点执行
+` ssh-keygen -t rsa `  
+### 在主节点上执行
+` ssh-copy-id root@cdh-01`  
+` ssh-copy-id root@cdh-02`
+` ssh-copy-id root@cdh-03`  
+` scp ~/.ssh/authorized_keys root@cdh-02:/root/.ssh/`  
+` scp ~/.ssh/authorized_keys root@cdh-03:/root/.ssh/`
+### 完成后验证效果
+`ssh cdh-02`  
+` exit`
+
+## 7. 调整系统使用swap的策略（所有节点执行）
+` sysctl -a | grep vm.swappiness `  
+` echo 1 > /proc/sys/vm/swappiness`  
+` sysctl -a | grep vm.swappiness`  
+` cat >> /etc/sysctl.conf << EOF  vm.swappiness=1  EOF`  
