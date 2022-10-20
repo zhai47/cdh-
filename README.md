@@ -90,3 +90,20 @@ cat >> /etc/sysctl.conf << EOF
   vm.swappiness=1  
   EOF
 ```  
+` sysctl vm.swappiness=1 `  
+``` shell 
+cat >> /etc/rc.d/rc.local << EOF
+if test -f /sys/kernel/mm/transparent_hugepage/enabled; then
+  echo never > /sys/kernel/mm/transparent_hugepage/enabled
+fi
+if test -f /sys/kernel/mm/transparent_hugepage/defrag; then
+  echo never > /sys/kernel/mm/transparent_hugepage/defrag
+fi
+EOF
+```
+` echo never > /sys/kernel/mm/transparent_hugepage/enabled`  
+` echo never > /sys/kernel/mm/transparent_hugepage/defrag`  
+` cat /sys/kernel/mm/transparent_hugepage/enabled`  
+` cat /sys/kernel/mm/transparent_hugepage/defrag`  
+` chmod 755 /etc/rc.d/rc.local`  
+## 8. 关闭透明大页（所有节点执行）
