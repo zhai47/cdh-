@@ -112,7 +112,66 @@ EOF
 ## 10. 配置ntp时间同步（需求节点执行）
 CentOS8，ntp没了，只要时间同步就行
 ## 11. 安装JDK（需求节点执行）
-先把jdk包分发到其他节点
-![image](https://user-images.githubusercontent.com/90238615/201813078-e441453c-8380-42b6-9a02-be60c6b1af5e.png)
-安装一下，（后面[tab]默认为tab键自动补全，懒得写了）
-yum install ./oracle-[tab] -y
+先把jdk包分发到其他节点  
+![image](https://user-images.githubusercontent.com/90238615/201813078-e441453c-8380-42b6-9a02-be60c6b1af5e.png)  
+安装一下，（后面[tab]默认为tab键自动补全，懒得写了）  
+yum install ./oracle-[tab] -y  
+ln -s /usr/java/jdk[tab] /usr/java/latest  
+![image](https://user-images.githubusercontent.com/90238615/201814395-3105edb1-d910-40ec-8526-213fca6e4e55.png)  
+![image](https://user-images.githubusercontent.com/90238615/201815970-59e47690-73ca-49c9-84bb-40bf0ef81b64.png)  
+## 12. 安装、配置mysql（主节点执行即可）
+CentOS 8 MySQL安装出问题，参考这个：https://blog.csdn.net/qq_42682745/article/details/123287788  
+远程连接不上虚拟机看这个：https://blog.csdn.net/arlene12345/article/details/122933316  
+
+## 13. 创建CM元数据库（主节点执行）
+需要先修改你的MySQL密码配置项，或者使用强密码  
+create database metastore default character set utf8;  
+create user 'hive'@'%' identified by 'hivedemima';  
+grant all privileges on metastore.* to 'hive'@'%';  
+
+create database cm default character set utf8;  
+create user 'cm'@'%' identified by 'cmdemima';  
+grant all privileges on cm.* to 'cm'@'%';  
+
+create database am default character set utf8;  
+create user 'am'@'%' identified by 'amdemima';  
+grant all privileges on am.* to 'am'@'%';  
+
+create database rm default character set utf8;  
+create user 'rm'@'%' identified by 'rmdemima';  
+grant all privileges on rm.* to 'rm'@'%';  
+
+create database hue default character set utf8;  
+create user 'hue'@'%' identified by 'huedemima';  
+grant all privileges on hue.* to 'hue'@'%';  
+
+create database oozie default character set utf8;  
+create user 'oozie'@'%' identified by 'ooziedemima';  
+grant all privileges on oozie.* to 'oozie'@'%';  
+
+create database sentry default character set utf8;  
+create user 'sentry'@'%' identified by 'sentrydemima';  
+grant all privileges on sentry.* to 'sentry'@'%';  
+
+create database nas default character set utf8;  
+create user 'nas'@'%' identified by 'nasdemima';  
+grant all privileges on nas.* to 'nas'@'%';  
+
+create database nms default character set utf8;   
+create user 'nms'@'%' identified by 'nmsdemima';  
+grant all privileges on nms.* to 'nms'@'%';  
+
+grant all privileges on *.* to 'root'@'%' identified by 'root';  
+
+flush privileges;  
+exit;  
+
+## 14. 配置http服务（主节点执行）
+![image](https://user-images.githubusercontent.com/90238615/201835962-67e9e8e4-c20c-4d67-9221-c1752c27d1d1.png)
+![image](https://user-images.githubusercontent.com/90238615/201835927-ae8ff627-c280-4384-8bbb-7730edaae1b3.png)
+![image](https://user-images.githubusercontent.com/90238615/201835949-23370d80-6a92-4d2f-bfc7-149ca9cca3d2.png)
+
+## 15. 创建cdh介质的本地源（主节点执行）
+CentOS8 没有createrepo，制作yum源这步先过
+## 16. 安装cdh介质的本地源（主节点执行）
+![image](https://user-images.githubusercontent.com/90238615/201837661-bcbe676f-9b4e-47db-a43f-c477bf44326d.png)
