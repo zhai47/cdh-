@@ -107,3 +107,12 @@ EOF
 ` cat /sys/kernel/mm/transparent_hugepage/defrag`  
 ` chmod 755 /etc/rc.d/rc.local`  
 ## 8. 关闭透明大页（所有节点执行）
+## 9. 配置sudo相关（所有节点执行）
+![image](https://user-images.githubusercontent.com/90238615/201812316-9a51f19e-49be-4c34-9809-78d32743e685.png)
+## 10. 配置ntp时间同步（需求节点执行）
+CentOS8，ntp没了，只要时间同步就行
+## 11. 安装JDK（需求节点执行）
+先把jdk包分发到其他节点
+![image](https://user-images.githubusercontent.com/90238615/201813078-e441453c-8380-42b6-9a02-be60c6b1af5e.png)
+安装一下，（后面[tab]默认为tab键自动补全，懒得写了）
+yum install ./oracle-[tab] -y
