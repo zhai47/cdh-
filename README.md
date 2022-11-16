@@ -120,6 +120,7 @@ ln -s /usr/java/jdk[tab] /usr/java/latest
 ![image](https://user-images.githubusercontent.com/90238615/201814395-3105edb1-d910-40ec-8526-213fca6e4e55.png)  
 ![image](https://user-images.githubusercontent.com/90238615/201815970-59e47690-73ca-49c9-84bb-40bf0ef81b64.png)  
 ## 12. 安装、配置mysql（主节点执行即可）
+https://blog.csdn.net/u012105931/article/details/124216727
 CentOS 8 MySQL安装出问题，参考这个：https://blog.csdn.net/qq_42682745/article/details/123287788  
 远程连接不上虚拟机看这个：https://blog.csdn.net/arlene12345/article/details/122933316  
 
